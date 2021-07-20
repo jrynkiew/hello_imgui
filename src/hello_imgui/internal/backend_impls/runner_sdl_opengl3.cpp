@@ -37,13 +37,13 @@ namespace HelloImGui
     void RunnerSdlOpenGl3::Impl_Select_Gl_Version()
     {
 #if defined(__EMSCRIPTEN__)
-        /*
+        
         {
             SDL_GL_SetAttribute(SDL_GL_CONTEXT_FLAGS, 0);
             SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_ES);
             SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
             SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
-        }*/
+        }
 #elif defined(HELLOIMGUI_USE_GLES3)
         {
             SDL_GL_SetAttribute(SDL_GL_CONTEXT_EGL, 3);
