@@ -1,0 +1,3 @@
+new mixer, but with codes that allow you to withdraw x amount of the pool deposited, not all in one transaction, as it tmakes it too obvious.
+
+Creation of a pool causes a creation of an "account" in the pool account, with access codes associated with it. The access codes all connect to the account and allow you to withdraw smaller amounts of money at a time from the mixer pool

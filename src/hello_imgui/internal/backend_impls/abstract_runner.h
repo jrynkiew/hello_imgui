@@ -1,5 +1,6 @@
 #pragma once
 #include "hello_imgui/runner_params.h"
+#include "qJulia.h"
 
 namespace HelloImGui
 {
@@ -13,10 +14,8 @@ class AbstractRunner
     virtual ~AbstractRunner() = default;
 
     RunnerParams & params;
-
     /// Step 4.a: Call Run()
     virtual void Run();
-
     /// Step 4.b: Or implement your own Run using Setup()/Render()/TearDown()
     void Setup();
     void CreateFramesAndRender(); // Returns true when exit is required by the user
@@ -30,6 +29,7 @@ class AbstractRunner
     void OnDestroy();
     void OnLowMemory();
 
+    class qJulia *qjSet;
 
    protected:
     //

@@ -156,11 +156,16 @@ namespace HelloImGui
         auto& io = ImGui::GetIO();
         glViewport(0, 0, (int)io.DisplaySize.x, (int)io.DisplaySize.y);
         ImVec4 clear_color = params.imGuiWindowParams.backgroundColor;
+        
         glClearColor(clear_color.x, clear_color.y, clear_color.z, clear_color.w);
+        
         glClear(GL_COLOR_BUFFER_BIT);
     }
 
-    void RunnerGlfwOpenGl3::Impl_RenderDrawData_To_3D() { ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData()); }
+    void RunnerGlfwOpenGl3::Impl_RenderDrawData_To_3D() { 
+        
+        ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData()); 
+    }
 
     void RunnerGlfwOpenGl3::Impl_UpdateAndRenderAdditionalPlatformWindows()
     {

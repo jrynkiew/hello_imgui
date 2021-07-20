@@ -107,7 +107,7 @@ void SetupDefaultImGuiStyle()
     if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
     {
         style.WindowRounding = 0.0f;
-        style.Colors[ImGuiCol_WindowBg].w = 1.0f;
+        //style.Colors[ImGuiCol_WindowBg].w = 1.0f;
     }
 }
 
