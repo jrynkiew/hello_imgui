@@ -180,7 +180,22 @@ void ShowDockableWindows(std::vector<DockableWindow>& dockableWindows)
     }
 }
 
-void DoCreateFullScreenImGuiWindow(const ImGuiWindowParams& imGuiWindowParams, bool useDocking)
+
+void ImplProvideFullScreenImGuiWindow(const ImGuiWindowParams& imGuiWindowParams)
+{
+    ImGui::SetNextWindowPos(ImVec2(0, 0));
+    ImVec2 winSize = ImGui::GetIO().DisplaySize;
+    if (imGuiWindowParams.showStatusBar)
+        winSize.y -= 30.f;
+    ImGui::SetNextWindowSize(winSize);
+    ImGuiWindowFlags windowFlags =
+        ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoScrollWithMouse | ImGuiWindowFlags_NoBringToFrontOnFocus;
+    if (imGuiWindowParams.showMenuBar)
+        windowFlags |= ImGuiWindowFlags_MenuBar;
+    ImGui::Begin("Main window (title bar invisible)", nullptr, windowFlags);
+}
+
+void ImplProvideFullScreenDockSpace(const ImGuiWindowParams& imGuiWindowParams)
 {
     ImGuiViewport* viewport = ImGui::GetMainViewport();
     ImGui::SetNextWindowPos(viewport->Pos);
@@ -190,8 +205,7 @@ void DoCreateFullScreenImGuiWindow(const ImGuiWindowParams& imGuiWindowParams, b
         viewportSize.y -= 30.f;
     ImGui::SetNextWindowSize(viewportSize);
     ImGui::SetNextWindowViewport(viewport->ID);
-    if (useDocking)
-        ImGui::SetNextWindowBgAlpha(0.0f);
+    ImGui::SetNextWindowBgAlpha(0.0f);
 
     ImGuiWindowFlags window_flags = ImGuiWindowFlags_NoDocking;
     window_flags |= ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize |
@@ -204,24 +218,14 @@ void DoCreateFullScreenImGuiWindow(const ImGuiWindowParams& imGuiWindowParams, b
     ImGui::PushStyleVar(ImGuiStyleVar_WindowBorderSize, 0.0f);
     ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0.0f, 0.0f));
     static bool p_open = true;
-    std::string windowTitle = useDocking ? "MainDockSpace" : "Main window (title bar invisible)";
-    ImGui::Begin(windowTitle.c_str(), &p_open, window_flags);
+    ImGui::Begin("MainDockSpace", &p_open, window_flags);
     ImGui::PopStyleVar(3);
-}
 
-
-void ImplProvideFullScreenImGuiWindow(const ImGuiWindowParams& imGuiWindowParams)
-{
-    DoCreateFullScreenImGuiWindow(imGuiWindowParams, false);
-}
-
-void ImplProvideFullScreenDockSpace(const ImGuiWindowParams& imGuiWindowParams)
-{
-    DoCreateFullScreenImGuiWindow(imGuiWindowParams, true);
     ImGuiID mainDockspaceId = ImGui::GetID("MainDockSpace");
     ImGuiDockNodeFlags dockspace_flags =
         ImGuiDockNodeFlags_PassthruCentralNode;  // ImGuiDockNodeFlags_PassthruDockspace;
     ImGui::DockSpace(mainDockspaceId, ImVec2(0.0f, 0.0f), dockspace_flags);
+
     gImGuiSplitIDs["MainDockSpace"] = mainDockspaceId;
 }
 

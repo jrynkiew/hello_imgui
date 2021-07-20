@@ -75,10 +75,6 @@ struct MobileCallbacks
 * `PostInit`: *VoidFunction, default=empty*.
     You can here add a function that will be called once after OpenGL and ImGui are inited
 
-* `BeforeExit`: *VoidFunction, default=empty*.
-    You can here add a function that will be called once before exiting (when OpenGL and ImGui are
-    still inited)
-
 * `AnyBackendEventCallback`: *AnyBackendCallback, default=empty*.
   Callbacks for events from a specific backend. _Only implemented for SDL, where the event
   will be of type 'SDL_Event *'_
@@ -109,7 +105,6 @@ struct RunnerCallbacks
     VoidFunction ShowMenus = {};
     VoidFunction ShowStatus = {};
     VoidFunction PostInit = {};
-    VoidFunction BeforeExit = {};
 
     AnyEventCallback AnyBackendEventCallback = {};
 

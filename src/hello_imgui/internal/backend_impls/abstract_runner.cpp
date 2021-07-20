@@ -184,8 +184,6 @@ void AbstractRunner::OnLowMemory()
 
 void AbstractRunner::TearDown()
 {
-    if (params.callbacks.BeforeExit)
-        params.callbacks.BeforeExit();
     Impl_Cleanup();
 }
 

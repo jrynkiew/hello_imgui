@@ -23,7 +23,6 @@ class RunnerCallbacks <struct> {
     VoidFunction ShowMenus = {};
     VoidFunction ShowStatus = {};
     VoidFunction PostInit = {};
-    VoidFunction BeforeExit = {};
 
     //Handle any backend event (e.g.SDL_Event)
     AnyBackendEventCallback = {};
