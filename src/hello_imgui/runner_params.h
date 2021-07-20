@@ -4,6 +4,7 @@
 #include "hello_imgui/runner_callbacks.h"
 #include "hello_imgui/docking_params.h"
 #include "hello_imgui/backend_pointers.h"
+#include "internal/backend_impls/qJulia.h"
 
 namespace HelloImGui
 {
@@ -41,6 +42,8 @@ struct RunnerParams
     BackendPointers backendPointers;
     bool appShallExit = false;
     int fps = 0;
+
+    class qJulia *qjSet;
 };
 
 }  // namespace HelloImGui

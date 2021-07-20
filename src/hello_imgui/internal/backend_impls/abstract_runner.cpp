@@ -39,7 +39,7 @@ void AbstractRunner::Setup()
     DockingDetails::ConfigureImGuiDocking(params.imGuiWindowParams);
 
     //Initiate 3D Model to render
-    qjSet = new qJulia;
+    params.qjSet = new qJulia(params.appWindowParams.windowSize.x, params.appWindowParams.windowSize.y);
     
     {
         ImGuiStyle* style = &ImGui::GetStyle();
@@ -138,9 +138,8 @@ void AbstractRunner::CreateFramesAndRender()
     ImGui::Render();
     Impl_Frame_3D_ClearColor();
 
-
     //Render 3D Model
-    qjSet->render();
+    params.qjSet->render();
 
     Impl_RenderDrawData_To_3D();
 

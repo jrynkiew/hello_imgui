@@ -70,7 +70,7 @@ void qJulia::render()
     useProgram();
 
     glUniform4fv(_quatPt            ,1  , value_ptr(quatPt));
-    glUniform3fv(_Resolution        ,1  , value_ptr(vec3(800, 600, float(800)/float(600))));
+    glUniform3fv(_Resolution        ,1  , value_ptr(vec3(sizeX, sizeY, float(sizeX)/float(sizeY))));
     glUniform3fv(_diffuseColor      ,1  , value_ptr(diffuseColor));
     glUniform3fv(_Light             ,1  , value_ptr(Light));
 

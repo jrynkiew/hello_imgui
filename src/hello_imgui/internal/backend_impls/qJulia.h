@@ -12,7 +12,8 @@
 //------------------------------------------------------------------------------
 #pragma once
 
-#include "vGizmo.h"
+//#include "vGizmo.h"
+#include "../../../../external/imGuIZMO.quat/imGuIZMO.quat/vGizmo.h"
 
 #include "glslProgramObject.h"
 
@@ -80,7 +81,7 @@ class qJulia : public mainProgramObj
 public:
 
     qJulia() { initShaders(); }
-
+    qJulia(int _sizeX, int _sizeY) { sizeX = _sizeX; sizeY = _sizeY; initShaders();}
     void initShaders();
     void render();
 
@@ -98,6 +99,9 @@ public:
     bool isFullRender = false;
     bool useShadow    = true;
     bool useAO        = false;
+
+    int sizeY;
+    int sizeX;
 
     mat3 matOrientation = mat3(1.0f);
     vec3 position = vec3(0.f);

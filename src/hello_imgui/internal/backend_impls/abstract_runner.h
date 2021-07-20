@@ -1,6 +1,5 @@
 #pragma once
 #include "hello_imgui/runner_params.h"
-#include "qJulia.h"
 
 namespace HelloImGui
 {
@@ -28,8 +27,6 @@ class AbstractRunner
     void OnResume();
     void OnDestroy();
     void OnLowMemory();
-
-    class qJulia *qjSet;
 
    protected:
     //
