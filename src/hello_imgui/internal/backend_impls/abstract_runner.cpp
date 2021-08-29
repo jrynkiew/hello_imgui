@@ -39,6 +39,8 @@ void AbstractRunner::Setup()
     DockingDetails::ConfigureImGuiDocking(params.imGuiWindowParams);
 
     //Initiate 3D Model to render
+    //params.qjSet->initShaders();
+    //params.qjSet = new qJulia(ImGui::GetWindowWidth(), ImGui::GetWindowHeight());
     params.qjSet = new qJulia(params.appWindowParams.windowSize.x, params.appWindowParams.windowSize.y);
     
     {
@@ -119,6 +121,8 @@ void AbstractRunner::RenderGui()
 
     if (params.imGuiWindowParams.showStatusBar)
         Menu_StatusBar::ShowStatusBar(params);
+        
+    DockingDetails::ShowCentralNode();
 
     DockingDetails::CloseWindowOrDock(params.imGuiWindowParams);
 }
@@ -136,7 +140,7 @@ void AbstractRunner::CreateFramesAndRender()
     RenderGui();
 
     ImGui::Render();
-    Impl_Frame_3D_ClearColor();
+    //Impl_Frame_3D_ClearColor();
 
     //Render 3D Model
     params.qjSet->render();

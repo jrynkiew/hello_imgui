@@ -180,6 +180,52 @@ void ShowDockableWindows(std::vector<DockableWindow>& dockableWindows)
     }
 }
 
+void ShowCentralNode()
+{
+    ImGuiWindowFlags walletConnect_flags = ImGuiWindowFlags_NoMove
+                         | ImGuiWindowFlags_NoDecoration
+                         | ImGuiWindowFlags_AlwaysAutoResize
+                         | ImGuiWindowFlags_NoSavedSettings
+                         | ImGuiWindowFlags_NoBackground;
+
+        ImGuiIO& io = ImGui::GetIO();
+
+        ImGuiID mainDockspaceId = ImGui::GetID("MainDockSpace");
+        auto centeralNode = ImGui::DockBuilderGetCentralNode(mainDockspaceId);
+        ImGui::SetNextWindowContentSize(ImVec2(160.0f, 0.0f));
+        //ImGui::SetNextWindowPos(ImVec2(io.DisplaySize.x * 0.3f, io.DisplaySize.y * 0.05f));
+        ImGui::SetNextWindowDockID(mainDockspaceId);
+        ImGui::SetNextWindowPos(ImVec2(centeralNode->Pos.x + centeralNode->Size.x/2 , centeralNode->Pos.y + centeralNode->Size.y/10));
+        ImGui::Begin("##walletConnect_button", nullptr, walletConnect_flags);
+        {
+
+            if (ImGui::Button("Connect Wallet"))
+            ImGui::OpenPopup("Connect Wallet");
+
+        // Always center this window when appearing
+        ImVec2 center = ImGui::GetMainViewport()->GetCenter();
+        ImGui::SetNextWindowPos(center, ImGuiCond_Appearing, ImVec2(0.5f, 0.5f));
+
+        if (ImGui::BeginPopupModal("Connect Wallet", NULL, ImGuiWindowFlags_AlwaysAutoResize))
+        {
+            ImGui::Text("Please confirm the operation in Metamask or ioPay desktop application\nClick OK once you have connected your wallet\n\n");
+            ImGui::Separator();
+
+            static bool dont_ask_me_next_time = false;
+            ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(0, 0));
+            ImGui::Checkbox("Remember my settings", &dont_ask_me_next_time);
+            ImGui::PopStyleVar();
+
+            if (ImGui::Button("OK", ImVec2(120, 0))) { ImGui::CloseCurrentPopup(); }
+            ImGui::SetItemDefaultFocus();
+            ImGui::SameLine();
+            if (ImGui::Button("Cancel", ImVec2(120, 0))) { ImGui::CloseCurrentPopup(); }
+            ImGui::EndPopup();
+        }
+
+        }
+        ImGui::End();
+}
 
 void ImplProvideFullScreenImGuiWindow(const ImGuiWindowParams& imGuiWindowParams)
 {

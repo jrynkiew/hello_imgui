@@ -81,7 +81,8 @@ class qJulia : public mainProgramObj
 public:
 
     qJulia() { initShaders(); }
-    qJulia(int _sizeX, int _sizeY) { sizeX = _sizeX; sizeY = _sizeY; initShaders();}
+    qJulia(int _sizeX, int _sizeY) { sizeX = _sizeX; sizeY = _sizeY; initShaders(); }
+    //qJulia(HelloImGui::RunnerParams runnerParams) {sizeX = runnerParams.appWindowParams.windowSize.x; sizeY = runnerParams.appWindowParams.windowSize.y;}
     void initShaders();
     void render();
 

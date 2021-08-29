@@ -111,5 +111,6 @@ void SetupDefaultImGuiStyle()
     }
 }
 
+
 }  // namespace ImGuiDefaultSettings
 }  // namespace HelloImGui
