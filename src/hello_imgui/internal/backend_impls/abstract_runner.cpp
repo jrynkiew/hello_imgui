@@ -122,7 +122,7 @@ void AbstractRunner::RenderGui()
     if (params.imGuiWindowParams.showStatusBar)
         Menu_StatusBar::ShowStatusBar(params);
         
-    DockingDetails::ShowCentralNode();
+    DockingDetails::ShowConnectWalletButton();
 
     DockingDetails::CloseWindowOrDock(params.imGuiWindowParams);
 }

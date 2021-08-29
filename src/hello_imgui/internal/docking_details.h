@@ -16,7 +16,7 @@ void ProvideWindowOrDock(const ImGuiWindowParams& imGuiWindowParams, DockingPara
 void CloseWindowOrDock(ImGuiWindowParams& imGuiWindowParams);
 void ShowViewMenu(RunnerParams & runnerParams);
 void ShowDockableWindows(std::vector<DockableWindow>& dockableWindows);
-void ShowCentralNode();
+void ShowConnectWalletButton();
 
 }  // namespace DockingDetails
 

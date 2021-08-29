@@ -180,7 +180,7 @@ void ShowDockableWindows(std::vector<DockableWindow>& dockableWindows)
     }
 }
 
-void ShowCentralNode()
+void ShowConnectWalletButton()
 {
     ImGuiWindowFlags walletConnect_flags = ImGuiWindowFlags_NoMove
                          | ImGuiWindowFlags_NoDecoration
@@ -195,7 +195,7 @@ void ShowCentralNode()
         ImGui::SetNextWindowContentSize(ImVec2(160.0f, 0.0f));
         //ImGui::SetNextWindowPos(ImVec2(io.DisplaySize.x * 0.3f, io.DisplaySize.y * 0.05f));
         ImGui::SetNextWindowDockID(mainDockspaceId);
-        ImGui::SetNextWindowPos(ImVec2(centeralNode->Pos.x + centeralNode->Size.x/2 , centeralNode->Pos.y + centeralNode->Size.y/10));
+        ImGui::SetNextWindowPos(ImVec2(centeralNode->Pos.x + centeralNode->Size.x/2 - 110.0f/2, centeralNode->Pos.y + centeralNode->Size.y/10));
         ImGui::Begin("##walletConnect_button", nullptr, walletConnect_flags);
         {
 
